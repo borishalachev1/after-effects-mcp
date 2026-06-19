@@ -28,12 +28,23 @@ The finished video is emailed to the account that owns the API key, and is downl
 
 The API is plan-gated: each `edit_video` call spends one credit. If a render fails, the credit is auto-refunded.
 
-### 2. Add it to your MCP client
-
-**Claude Code**
+### 2. Install the server
 
 ```bash
-claude mcp add after-effects -e AFTERAI_API_KEY=ak_your_key -- npx -y after-effects-mcp
+git clone https://github.com/borishalachev1/after-effects-mcp.git
+cd after-effects-mcp
+npm install
+npm run build
+```
+
+This produces `dist/index.js`, which your MCP client runs.
+
+### 3. Add it to your MCP client
+
+**Claude Code** (use the absolute path to the built file):
+
+```bash
+claude mcp add after-effects -e AFTERAI_API_KEY=ak_your_key -- node /absolute/path/to/after-effects-mcp/dist/index.js
 ```
 
 **Claude Desktop / Cursor** — add to your MCP config (`claude_desktop_config.json` or `.cursor/mcp.json`):
@@ -42,8 +53,8 @@ claude mcp add after-effects -e AFTERAI_API_KEY=ak_your_key -- npx -y after-effe
 {
   "mcpServers": {
     "after-effects": {
-      "command": "npx",
-      "args": ["-y", "after-effects-mcp"],
+      "command": "node",
+      "args": ["/absolute/path/to/after-effects-mcp/dist/index.js"],
       "env": {
         "AFTERAI_API_KEY": "ak_your_key"
       }
@@ -52,7 +63,9 @@ claude mcp add after-effects -e AFTERAI_API_KEY=ak_your_key -- npx -y after-effe
 }
 ```
 
-### 3. Use it
+> Coming soon: a published npm package so you can run it with `npx -y after-effects-mcp` instead of cloning.
+
+### 4. Use it
 
 > "Edit this clip with a cinematic color grade and subtitles: https://drive.google.com/…"
 
