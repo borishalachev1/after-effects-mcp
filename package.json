@@ -1,0 +1,48 @@
+{
+  "name": "after-effects-mcp",
+  "version": "1.0.0",
+  "description": "After Effects MCP server — let Claude (and any MCP client) edit videos through afterAI: AI upscaling, cinematic color grade, animated subtitles, zoom effects and beat-synced phonk edits, all rendered in After Effects in the cloud.",
+  "type": "module",
+  "bin": {
+    "after-effects-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "after-effects",
+    "after-effects-mcp",
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "video-editing",
+    "ai-video",
+    "phonk-edit",
+    "youtube-shorts",
+    "automation",
+    "afterai"
+  ],
+  "author": "afterAI (https://getafterai.eu)",
+  "license": "MIT",
+  "homepage": "https://getafterai.eu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borishalachev1/after-effects-mcp.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0"
+  }
+}
